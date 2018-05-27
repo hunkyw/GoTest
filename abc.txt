@@ -1,3 +1,7 @@
 abcd12345
 hello
 gain
+
+git remote add origin https://github.com/hunkyw/someGoTest.git
+
+git push -u origin master
