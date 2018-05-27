@@ -14,7 +14,7 @@ func main() {
 	fmt.Println("s1=",s1)
 	s2 := arr[:]
 	fmt.Println("s2=",s2)
-
+	//切片操作
 
 	fmt.Println("After updateSlice(s1)")
 	updataSlice(s1)
@@ -42,7 +42,7 @@ func main() {
 	fmt.Printf("s4 = %v , len(s4) = %d , cap(s4) = %d \n",s4,len(s4),cap(s4))
 	fmt.Println(s3)
 	fmt.Println(s4)
-
+	//append 添加元素
 	s5 := append(s4,10)
 	s6 := append(s5, 11)
 	s7 := append(s6, 12)
