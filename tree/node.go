@@ -13,7 +13,13 @@ func (node treeNode) print() {
 }
 
 func (node *treeNode) setValue (value int){
+	if node ==nil {
+		fmt.Println("Setting value to nil node.Ignored.")
+		return
+	}
+
 	node.value = value
+
 }
 
 func createNode(value int) *treeNode {
@@ -38,8 +44,9 @@ func main() {
 	root.print()
 	root.setValue(100)
 
-	pRoot := &root
-	pRoot.print()
+	var pRoot *treeNode
 	pRoot.setValue(200)
+	pRoot = &root
+	pRoot.setValue(300)
 	pRoot.print()
 }
