@@ -9,7 +9,7 @@ type treeNode struct {
 
 func (node treeNode) print() {
 
-	fmt.Print(node.value)
+	fmt.Print(node.value,"")
 }
 
 func (node *treeNode) setValue (value int){
@@ -34,4 +34,12 @@ func main() {
 	root.right.left.setValue(4)
     root.right.left.print()
     fmt.Println()
+
+	root.print()
+	root.setValue(100)
+
+	pRoot := &root
+	pRoot.print()
+	pRoot.setValue(200)
+	pRoot.print()
 }
