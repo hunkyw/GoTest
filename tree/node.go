@@ -9,7 +9,7 @@ type treeNode struct {
 
 func (node treeNode) print() {
 
-	fmt.Print(node.value,"")
+	fmt.Print(node.value," ")
 }
 
 func (node *treeNode) setValue (value int){
