@@ -22,6 +22,16 @@ func (node *treeNode) setValue (value int){
 
 }
 
+func (node *treeNode) traverse() {
+	if node == nil {
+		return
+	}
+	node.left.traverse()
+	node.print()
+	node.right.traverse()
+
+}
+
 func createNode(value int) *treeNode {
 	return &treeNode{value:value}
 }
@@ -38,15 +48,7 @@ func main() {
 	root.left.right = createNode(2)
 
 	root.right.left.setValue(4)
-    root.right.left.print()
-    fmt.Println()
 
-	root.print()
-	root.setValue(100)
+	root.traverse()
 
-	var pRoot *treeNode
-	pRoot.setValue(200)
-	pRoot = &root
-	pRoot.setValue(300)
-	pRoot.print()
 }
