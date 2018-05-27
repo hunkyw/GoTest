@@ -42,4 +42,10 @@ func main() {
 	fmt.Printf("s4 = %v , len(s4) = %d , cap(s4) = %d \n",s4,len(s4),cap(s4))
 	fmt.Println(s3)
 	fmt.Println(s4)
+
+	s5 := append(s4,10)
+	s6 := append(s5, 11)
+	s7 := append(s6, 12)
+	fmt.Println("s3,s4,s5=",s5,s6,s7)
+	fmt.Println("arr1=",arr1)
 }
