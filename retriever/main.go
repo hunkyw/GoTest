@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"retriever/mock"
+	"fmt"
+	"retriever/real"
 )
 
 type Retriever interface {
@@ -10,11 +11,12 @@ type Retriever interface {
 }
 
 func download(r Retriever)  string {
-	return r.Get("www.imooc.com")
+	return r.Get("http://www.imooc.com")
 }
 
 func main() {
 	var r  Retriever
 	r = mock.Retriever{"this is a fake imooc.com"}
+    r = real.Retriever{}
 	fmt.Println(download(r))
 }
