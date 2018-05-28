@@ -1,7 +1,8 @@
 package main
 
 import "fmt"
+
 //入口函数
-func main()  {
+func main() {
 	fmt.Println("hello world!!")
 }

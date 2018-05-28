@@ -4,25 +4,25 @@ import (
 	"fmt"
 )
 
-func eval(a,b int, op string) int{
+func eval(a, b int, op string) int {
 	switch op {
-	case "+" :
+	case "+":
 		return a + b
-	case "-" :
+	case "-":
 		return a - b
-	case "*" :
+	case "*":
 		return a * b
-	case "/" :
+	case "/":
 		return a / b
 	default:
-		panic("unsupported operation : "+op)
+		panic("unsupported operation : " + op)
 	}
 }
 
-func div (a,b int) (q ,r  int){
+func div(a, b int) (q, r int) {
 	return a / b, a % b
 }
 func main() {
-	fmt.Println(eval(3,4 ,"*"))
-	fmt.Println(div(13,3))
+	fmt.Println(eval(3, 4, "*"))
+	fmt.Println(div(13, 3))
 }

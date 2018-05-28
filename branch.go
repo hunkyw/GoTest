@@ -1,36 +1,36 @@
 package main
 
 import (
-	"io/ioutil"
 	"fmt"
+	"io/ioutil"
 )
 
 func grade(score int) string {
 	g := ""
-	switch  {
-	case score < 0 ||score > 100:
+	switch {
+	case score < 0 || score > 100:
 		panic(fmt.Sprintf(
-			"Wrong score: %d",score))
-	case score<60:
-		g="F"
-	case score<80:
-	    g="C"
-	case score<90:
-		g="B"
-	case score<=100:
-		g="A"
+			"Wrong score: %d", score))
+	case score < 60:
+		g = "F"
+	case score < 80:
+		g = "C"
+	case score < 90:
+		g = "B"
+	case score <= 100:
+		g = "A"
 
 	}
 	return g
 
 }
 func main() {
-	const filename  = "abc.txt"
+	const filename = "abc.txt"
 
-	if constens,err := ioutil.ReadFile(filename);err != nil {
+	if constens, err := ioutil.ReadFile(filename); err != nil {
 		fmt.Println(err)
-	}else {
-		fmt.Printf("%s\n",constens)
+	} else {
+		fmt.Printf("%s\n", constens)
 	}
 	fmt.Println(
 		grade(0),
@@ -39,5 +39,5 @@ func main() {
 		grade(82),
 		grade(99),
 		grade(100),
-		)
+	)
 }

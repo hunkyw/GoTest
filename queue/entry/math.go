@@ -1,12 +1,11 @@
 package main
 
 import (
-
 	"fmt"
 	"queue"
 )
 
-func main()  {
+func main() {
 	q := queue.Queue{1}
 	q.Push(2)
 	q.Push(3)

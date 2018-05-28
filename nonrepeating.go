@@ -2,22 +2,22 @@ package main
 
 import "fmt"
 
-func lengthOfNonrepeatingSubStr(s string) int{
+func lengthOfNonrepeatingSubStr(s string) int {
 	lastOccurred := make(map[rune]int)
 	start := 0
 	maxLength := 0
 
-	for i, ch := range []rune(s)  {
-		lastI,ok := lastOccurred[ch]
+	for i, ch := range []rune(s) {
+		lastI, ok := lastOccurred[ch]
 		if ok && lastI >= start {
-			start = lastOccurred[ch]+1
+			start = lastOccurred[ch] + 1
 
 		}
-		if i - start + 1 > maxLength{
+		if i-start+1 > maxLength {
 
-			maxLength = i -start +1
+			maxLength = i - start + 1
 		}
-		lastOccurred[ch]=i
+		lastOccurred[ch] = i
 	}
 	return maxLength
 }
