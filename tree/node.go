@@ -1,54 +1,25 @@
-package main
+package tree
 
 import "fmt"
 
-type treeNode struct {
-	value int
-	left,right *treeNode
+type Node struct {
+	Value       int
+	Left, Right *Node
 }
 
-func (node treeNode) print() {
-
-	fmt.Print(node.value," ")
+func (node Node) Print() {
+	fmt.Print(node.Value, " ")
 }
 
-func (node *treeNode) setValue (value int){
-	if node ==nil {
-		fmt.Println("Setting value to nil node.Ignored.")
-		return
-	}
-
-	node.value = value
-
-}
-
-func (node *treeNode) traverse() {
+func (node *Node) SetValue(value int) {
 	if node == nil {
+		fmt.Println("Setting Value to nil " +
+			"node. Ignored.")
 		return
 	}
-	node.left.traverse()
-	node.print()
-	node.right.traverse()
-
+	node.Value = value
 }
 
-func createNode(value int) *treeNode {
-	return &treeNode{value:value}
-}
-
-
-func main() {
-	var  root  treeNode
-
-	root = treeNode{value:3}
-	root.left = &treeNode{}
-	root.right = &treeNode{5,nil,nil}
-	root.right.left = new(treeNode)
-
-	root.left.right = createNode(2)
-
-	root.right.left.setValue(4)
-
-	root.traverse()
-
+func CreateNode(value int) *Node {
+	return &Node{Value: value}
 }
