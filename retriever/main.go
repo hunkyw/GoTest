@@ -25,6 +25,10 @@ func main() {
 	}
 
 	inspect(r)
+
+    //type assertion
+    realRetriever := r.(*real.Retriever)
+    fmt.Println(realRetriever.TimeOut)
 	//fmt.Println(download(r))
 }
 
