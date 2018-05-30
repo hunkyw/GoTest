@@ -17,9 +17,10 @@ func tryDefer()  {
 }
 
 func writeFile(filename string)  {
-	file , err := os.Create(filename)
+	file , err := os.OpenFile(filename, os.O_EXCL|os.O_CREATE, 0666)
 	if err != nil {
-		panic(err)
+		fmt.Println("Error:",err.Error())
+		return
 	}
 	defer file.Close()
 
@@ -33,7 +34,6 @@ func writeFile(filename string)  {
 }
 
 func main() {
-	tryDefer()
 	writeFile("fib.txt")
 
 }
