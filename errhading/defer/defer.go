@@ -8,10 +8,12 @@ import (
 )
 
 func tryDefer()  {
-	defer fmt.Println(1)
-	defer fmt.Println(2)
-	fmt.Println(3)
-	panic("error occ")
+	for i := 0 ; i < 100 ; i++ {
+		defer fmt.Println(i)
+		if i == 30 {
+			panic("printed too many")
+		}
+	}
 }
 
 func writeFile(filename string)  {
@@ -31,5 +33,7 @@ func writeFile(filename string)  {
 }
 
 func main() {
+	tryDefer()
 	writeFile("fib.txt")
+
 }
