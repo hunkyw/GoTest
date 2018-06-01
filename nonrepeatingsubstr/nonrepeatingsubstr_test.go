@@ -1,8 +1,7 @@
-package nonrepeatingsubstr
+package main
 
 import (
 	"testing"
-	"nonrepeatingsubstr"
 )
 
 func TestSubstr(t *testing.T){
@@ -25,7 +24,7 @@ func TestSubstr(t *testing.T){
 	}
 
 	for _,tt := range tests{
-		actual := nonrepeatingsubstr.LengthOfNonrepeatingSubStr(tt.s)
+		actual := lengthOfNonrepeatingSubStr(tt.s)
 		if actual != tt.ans {
 			t.Errorf("got %d for input %s ;" + "expected %d ", actual , tt.s , tt.ans)
 		}
