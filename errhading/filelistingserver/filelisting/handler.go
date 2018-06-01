@@ -1,9 +1,9 @@
 package filelisting
 
 import (
+	"io/ioutil"
 	"net/http"
 	"os"
-	"io/ioutil"
 	"strings"
 )
 
@@ -11,17 +11,17 @@ const prefix = "/"
 
 type userError string
 
-func (e userError) Error() string{
+func (e userError) Error() string {
 	return e.Message()
 }
 
 func (e userError) Message() string {
-    return string(e)
+	return string(e)
 }
 
-func HandleFileList (writer http.ResponseWriter, request *http.Request)error {
-	if strings.Index(request.URL.Path,prefix) != 0{
-		return userError("path must start " + "with" + prefix )
+func HandleFileList(writer http.ResponseWriter, request *http.Request) error {
+	if strings.Index(request.URL.Path, prefix) != 0 {
+		return userError("path must start " + "with" + prefix)
 	}
 
 	path := request.URL.Path[len(prefix):]

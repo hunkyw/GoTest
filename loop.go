@@ -3,9 +3,9 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
-	"io"
 	"strings"
 )
 
@@ -25,7 +25,7 @@ func printFile(filename string) {
 	printFileContents(file)
 
 }
-func printFileContents(reader io.Reader)  {
+func printFileContents(reader io.Reader) {
 	scanner := bufio.NewScanner(reader)
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())

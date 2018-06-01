@@ -1,16 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"strings"
-	"io"
 	"bufio"
+	"fmt"
+	"io"
+	"strings"
 )
 
-func fibonacci() intGen{
-    a , b :=0 , 1
-    return func() int {
-		a , b = b , a + b
+func fibonacci() intGen {
+	a, b := 0, 1
+	return func() int {
+		a, b = b, a+b
 		return a
 	}
 }
@@ -20,16 +20,16 @@ type intGen func() int
 func (g intGen) Read(p []byte) (n int, err error) {
 	next := g()
 	if next > 10000 {
-		return 0,io.EOF
+		return 0, io.EOF
 
 	}
-	s := fmt.Sprintf("%d\n",next)
+	s := fmt.Sprintf("%d\n", next)
 	return strings.NewReader(s).Read(p)
 }
-func printFileConcents(reader io.Reader)  {
+func printFileConcents(reader io.Reader) {
 	scanner := bufio.NewScanner(reader)
 
-	for scanner.Scan()  {
+	for scanner.Scan() {
 		fmt.Println(scanner.Text())
 	}
 }
