@@ -1,0 +1,9 @@
+mode: set
+nonrepeatingsubstr\nonrepeating.go:5.47,10.31 4 1
+nonrepeatingsubstr\nonrepeating.go:22.2,22.18 1 1
+nonrepeatingsubstr\nonrepeating.go:10.31,12.27 2 1
+nonrepeatingsubstr\nonrepeating.go:16.3,16.28 1 1
+nonrepeatingsubstr\nonrepeating.go:20.3,20.23 1 1
+nonrepeatingsubstr\nonrepeating.go:12.27,15.4 1 1
+nonrepeatingsubstr\nonrepeating.go:16.28,19.4 1 1
+nonrepeatingsubstr\nonrepeating.go:24.13,35.2 9 0

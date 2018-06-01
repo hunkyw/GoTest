@@ -1,8 +1,7 @@
-package nonrepeatingsubstr
+package main
 
 import (
 	"testing"
-	"nonrepeatingsubstr"
 )
 
 func TestSubstr(t *testing.T){
@@ -25,9 +24,21 @@ func TestSubstr(t *testing.T){
 	}
 
 	for _,tt := range tests{
-		actual := nonrepeatingsubstr.LengthOfNonrepeatingSubStr(tt.s)
+		actual := lengthOfNonrepeatingSubStr(tt.s)
 		if actual != tt.ans {
 			t.Errorf("got %d for input %s ;" + "expected %d ", actual , tt.s , tt.ans)
+		}
+	}
+}
+
+func BenchmarkSubstr(b *testing.B)  {
+	s := "黑化肥会挥发发灰会花飞灰化肥挥发发黑会飞花"
+	ans := 8
+
+	for i := 0 ; i < b.N ; i++ {
+		actual := lengthOfNonrepeatingSubStr(s)
+		if actual != ans {
+			b.Errorf("got %d for input %s;" + "expected %d", actual, s, ans)
 		}
 	}
 }

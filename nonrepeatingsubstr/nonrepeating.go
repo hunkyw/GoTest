@@ -1,4 +1,4 @@
-package nonrepeatingsubstr
+package main
 
 import "fmt"
 

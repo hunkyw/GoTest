@@ -2,7 +2,6 @@ package basic
 
 import (
 	"testing"
-	"basic"
 )
 
 func TestTriangle(t *testing.T) {
@@ -15,7 +14,7 @@ func TestTriangle(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		if actual := basic.CalcTriangle(tt.a, tt.b); actual != tt.c {
+		if actual := CalcTriangle(tt.a, tt.b); actual != tt.c {
 			t.Errorf("calcTriangle(%d , %d);"+"got %d ; expected %d", tt.a, tt.b, actual, tt.c)
 		}
 	}
