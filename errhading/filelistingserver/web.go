@@ -1,32 +1,48 @@
 package main
 
 import (
-	"filelisting"
-	"github.com/gpmgo/gopm/modules/log"
+	"log"
 	"net/http"
+	_ "net/http/pprof"
 	"os"
+
+	"filelisting"
 )
 
-type appHandler func(writer http.ResponseWriter, request *http.Request) error
+type appHandler func(writer http.ResponseWriter,
+	request *http.Request) error
 
-func errWrapper(handler appHandler) func(http.ResponseWriter, *http.Request) {
-	return func(writer http.ResponseWriter, request *http.Request) {
+func errWrapper(
+	handler appHandler) func(
+	http.ResponseWriter, *http.Request) {
+	return func(writer http.ResponseWriter,
+		request *http.Request) {
+		// panic
 		defer func() {
 			if r := recover(); r != nil {
-				log.Warn("Panic: %v", r)
-				http.Error(writer, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+				log.Printf("Panic: %v", r)
+				http.Error(writer,
+					http.StatusText(http.StatusInternalServerError),
+					http.StatusInternalServerError)
 			}
-
 		}()
-		err := handler(writer, request)
-		if err != nil {
-			log.Warn("Error handling request : %s", err.Error())
 
-			if userError, ok := err.(userError); ok {
-				http.Error(writer, userError.Message(), http.StatusBadRequest)
+		err := handler(writer, request)
+
+		if err != nil {
+			log.Printf("Error occurred "+
+				"handling request: %s",
+				err.Error())
+
+			// user error
+			if userErr, ok := err.(userError); ok {
+				http.Error(writer,
+					userErr.Message(),
+					http.StatusBadRequest)
 				return
 			}
 
+			// system error
 			code := http.StatusOK
 			switch {
 			case os.IsNotExist(err):
@@ -36,7 +52,8 @@ func errWrapper(handler appHandler) func(http.ResponseWriter, *http.Request) {
 			default:
 				code = http.StatusInternalServerError
 			}
-			http.Error(writer, http.StatusText(code), code)
+			http.Error(writer,
+				http.StatusText(code), code)
 		}
 	}
 }
@@ -47,11 +64,11 @@ type userError interface {
 }
 
 func main() {
-	http.HandleFunc("/", errWrapper(filelisting.HandleFileList))
-	err := http.ListenAndServe(":8888", nil)
+	http.HandleFunc("/",
+		errWrapper(filelisting.HandleFileList))
 
+	err := http.ListenAndServe(":8888", nil)
 	if err != nil {
 		panic(err)
 	}
-
 }
